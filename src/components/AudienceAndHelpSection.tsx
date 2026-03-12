@@ -41,7 +41,7 @@ const helpSteps = [
 
 export default function AudienceAndHelpSection() {
   return (
-    <section className="relative overflow-hidden bg-[#f7f7f9]">
+    <section id="audiencia" className="relative overflow-hidden bg-[#f7f7f9]">
       {/* fondo general */}
       <div className="absolute inset-0">
         <div className="absolute left-0 top-0 h-full w-full bg-[linear-gradient(to_bottom,#f7f7f9_0%,#f2f3f6_100%)]" />

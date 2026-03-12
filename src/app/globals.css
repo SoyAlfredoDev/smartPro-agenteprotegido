@@ -1,4 +1,10 @@
 @import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
 :root {
   --primary: #231f3a;
   --primary-light: #2f2a4d;

@@ -32,7 +32,7 @@ const features: FeatureItem[] = [
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-[#f7f7f9]">
+    <section id="hero" className="relative overflow-hidden bg-[#f7f7f9] pt-20">
       <div className="mx-auto max-w-[1400px] px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
         <div className="relative overflow-hidden rounded-[28px] bg-[#f3f3f5] shadow-[0_20px_60px_rgba(35,31,58,0.08)]">
           {/* Elementos decorativos */}
@@ -102,7 +102,7 @@ export default function HeroSection() {
 
                 <div className="relative overflow-hidden rounded-[26px] bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
                   <Image
-                    src="/hero-proteccion-profesional.jpg"
+                    src="/images/hero-proteccion-profesional.png"
                     alt="Abogado revisando documentos"
                     width={1200}
                     height={800}

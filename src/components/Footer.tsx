@@ -43,7 +43,10 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="border-t border-[#d9dbe3] bg-[#f7f7f9] text-[#231f3a]">
+    <footer
+      id="contacto"
+      className="border-t border-[#d9dbe3] bg-[#f7f7f9] text-[#231f3a]"
+    >
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-4 xl:gap-12">
           {/* Marca */}
@@ -67,24 +70,6 @@ const Footer = () => {
               administrativos complejos, con una atención seria, estratégica y
               enfocada en proteger su carrera profesional.
             </p>
-
-            <div className="mt-6 w-full max-w-sm rounded-2xl border border-[#dde1e8] bg-white p-4 shadow-sm">
-              <div className="flex items-start gap-3">
-                <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#eef3f4] text-[#587e8d]">
-                  <ShieldCheck className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-sm font-bold uppercase tracking-[0.08em] text-[#231f3a]">
-                    Respaldo profesional
-                  </p>
-                  <p className="mt-1 text-sm leading-6 text-[#6b7280]">
-                    Orientación clara, acompañamiento legal y una estrategia
-                    enfocada en reducir riesgos y defender tu ejercicio
-                    profesional.
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Enlaces */}
@@ -186,6 +171,24 @@ const Footer = () => {
           <p>
             © {currentYear} Agente Protegido. Todos los derechos reservados.
           </p>
+
+          {/* Creador */}
+          <div className="flex items-center justify-center gap-2">
+            <span>creado por: </span>
+
+            <a
+              href="https://smartpro.cl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center hover:opacity-80 transition-opacity"
+            >
+              <img
+                src="/images/logo-smartpro.png"
+                alt="Logo SmartPro"
+                className="h-7 w-auto object-contain"
+              />
+            </a>
+          </div>
 
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
             <a href="#" className="transition hover:text-[#587e8d]">

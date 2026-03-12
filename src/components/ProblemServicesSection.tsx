@@ -40,7 +40,10 @@ const services = [
 
 export default function ProblemServicesSection() {
   return (
-    <section className="relative overflow-hidden bg-[#f7f7f9] py-12 sm:py-16 lg:py-20">
+    <section
+      id="problema"
+      className="relative overflow-hidden bg-[#f7f7f9] py-12 sm:py-16 lg:py-20"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-[28px] border border-[#dfe3e8] bg-[#f3f3f5] shadow-[0_20px_60px_rgba(35,31,58,0.08)]">
           {/* fondos decorativos */}
@@ -194,37 +197,6 @@ export default function ProblemServicesSection() {
                 })}
               </div>
             </div>
-
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ duration: 0.55, delay: 0.12 }}
-              className="mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center lg:mt-12"
-            >
-              <motion.a
-                href="#contacto"
-                whileHover={{ y: -2, scale: 1.01 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center gap-3 rounded-xl bg-[#231f3a] px-6 py-4 text-sm font-extrabold uppercase tracking-[0.08em] text-white shadow-[0_12px_30px_rgba(35,31,58,0.24)] transition hover:bg-[#2d2848]"
-              >
-                Solicitar asesoría
-                <ArrowRight className="h-4 w-4" />
-              </motion.a>
-
-              <motion.a
-                href="https://wa.me/56900000000"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -2, scale: 1.01 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center gap-3 rounded-xl bg-[#587e8d] px-6 py-4 text-sm font-extrabold uppercase tracking-[0.08em] text-white shadow-[0_12px_30px_rgba(88,126,141,0.24)] transition hover:bg-[#4e7280]"
-              >
-                Hablar por WhatsApp
-                <ArrowRight className="h-4 w-4" />
-              </motion.a>
-            </motion.div>
           </div>
         </div>
       </div>
