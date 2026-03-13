@@ -9,6 +9,7 @@ import {
   FileX2,
   ArrowRight,
 } from "lucide-react";
+import Link from "next/link";
 
 type FeatureItem = {
   icon: React.ElementType;
@@ -80,14 +81,30 @@ export default function HeroSection() {
                 </p>
               </div>
 
-              <motion.button
+              <motion.div
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.96 }}
-                className="mt-8 inline-flex items-center gap-3 rounded-xl bg-[#231f3a] px-7 py-4 text-sm font-extrabold uppercase tracking-[0.08em] text-white shadow-[0_12px_30px_rgba(35,31,58,0.25)] transition hover:bg-[#2e294b]"
+                className="mt-8 inline-block"
               >
-                Solicitar asesoría
-                <ArrowRight className="h-4 w-4" />
-              </motion.button>
+                <Link
+                  href=""
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const target = document.querySelector("#contacto");
+                    if (target) {
+                      target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
+                      window.history.pushState(null, "", "#contacto");
+                    }
+                  }}
+                  className="inline-flex items-center gap-3 rounded-xl bg-[#231f3a] px-7 py-4 text-sm font-extrabold uppercase tracking-[0.08em] text-white shadow-[0_12px_30px_rgba(35,31,58,0.25)] transition hover:bg-[#2e294b]"
+                >
+                  Solicitar asesoría
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </motion.div>
             </motion.div>
 
             {/* Imagen */}
