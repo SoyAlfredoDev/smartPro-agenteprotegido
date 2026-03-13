@@ -59,6 +59,7 @@ const urgencias = [
 
 const initialFormData = {
   nombreCompleto: "",
+  email: "",
   telefonoWhatsapp: "",
   isapre: "",
   cargoActual: "",
@@ -69,6 +70,7 @@ const initialFormData = {
 
 const requiredFields = [
   { key: "nombreCompleto", label: "Nombre completo" },
+  { key: "email", label: "Correo electrónico" },
   { key: "telefonoWhatsapp", label: "Teléfono / WhatsApp" },
   { key: "isapre", label: "Isapre donde trabajas" },
   { key: "cargoActual", label: "Cargo actual" },
@@ -123,7 +125,6 @@ function StatusModal({ type, missingFields = [], onClose }) {
             onClick={(e) => e.stopPropagation()}
             className="relative w-full max-w-md overflow-hidden rounded-3xl border border-white/10 bg-[#1c1833] shadow-[0_40px_100px_rgba(0,0,0,0.55)]"
           >
-            {/* glow */}
             <div
               className={`absolute inset-0 ${
                 isSuccess
@@ -133,7 +134,6 @@ function StatusModal({ type, missingFields = [], onClose }) {
             />
 
             <div className="relative p-7 sm:p-8">
-              {/* close */}
               <button
                 onClick={onClose}
                 className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-white/40 transition hover:bg-white/10 hover:text-white/70"
@@ -141,7 +141,6 @@ function StatusModal({ type, missingFields = [], onClose }) {
                 <X className="h-4 w-4" />
               </button>
 
-              {/* icon */}
               <div
                 className={`mx-auto flex h-16 w-16 items-center justify-center rounded-2xl ${
                   isSuccess
@@ -156,14 +155,12 @@ function StatusModal({ type, missingFields = [], onClose }) {
                 )}
               </div>
 
-              {/* title */}
               <h3 className="mt-5 text-center text-xl font-bold text-white sm:text-2xl">
                 {isSuccess && "¡Solicitud enviada!"}
                 {isError && "Campos incompletos"}
                 {isSendError && "Error al enviar"}
               </h3>
 
-              {/* body */}
               <div className="mt-3 text-center text-sm leading-6 text-white/65 sm:text-[15px]">
                 {isSuccess && (
                   <p>
@@ -199,7 +196,6 @@ function StatusModal({ type, missingFields = [], onClose }) {
                 )}
               </div>
 
-              {/* button */}
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
@@ -259,7 +255,6 @@ export default function ContactSection() {
     setModalType(null);
 
     try {
-      // Trim all values before sending
       const trimmed = Object.fromEntries(
         Object.entries(formData).map(([k, v]) => [k, v.trim()]),
       );
@@ -276,7 +271,6 @@ export default function ContactSection() {
 
   return (
     <>
-      {/* ── Modal ── */}
       <AnimatePresence>
         {modalType && (
           <StatusModal
@@ -287,7 +281,6 @@ export default function ContactSection() {
         )}
       </AnimatePresence>
 
-      {/* ── Section ── */}
       <section className="relative overflow-hidden bg-[#f7f7f9] py-16 sm:py-20 lg:py-24">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#f7f7f9_0%,#eef2f5_100%)]" />
@@ -297,7 +290,7 @@ export default function ContactSection() {
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
-            {/* ── Left column ── */}
+            {/* Left column */}
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -384,7 +377,7 @@ export default function ContactSection() {
               </motion.a>
             </motion.div>
 
-            {/* ── Right column — Form ── */}
+            {/* Right column — Form */}
             <motion.div
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -398,19 +391,15 @@ export default function ContactSection() {
 
               <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-[#231f3a] shadow-[0_30px_80px_rgba(35,31,58,0.28)]">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(88,126,141,0.35),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.05),transparent_24%)]" />
-                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.02),transparent_35%,rgba(255,255,255,0.03))]" />
-
                 <div className="relative p-5 sm:p-7 lg:p-8">
                   <div className="mb-6">
                     <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.08em] text-[#bfe1ea] backdrop-blur-sm">
                       <ShieldCheck className="h-3.5 w-3.5" />
                       Formulario de contacto
                     </div>
-
                     <h3 className="mt-4 text-[1.7rem] font-black leading-tight tracking-[-0.03em] text-white sm:text-[2rem]">
                       Solicita asesoría
                     </h3>
-
                     <p className="mt-2 max-w-md text-sm leading-6 text-white/70 sm:text-[15px]">
                       Déjanos tus datos y una breve descripción. Revisaremos tu
                       caso antes de contactarte.
@@ -419,105 +408,86 @@ export default function ContactSection() {
 
                   <form className="space-y-4" onSubmit={handleSubmit}>
                     <div className="grid gap-4 sm:grid-cols-2">
-                      {/* Nombre completo */}
                       <div className="sm:col-span-2">
-                        <label htmlFor="nombreCompleto" className="sr-only">
-                          Nombre completo
-                        </label>
                         <div className="relative">
                           <User className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6b7280]" />
                           <input
-                            id="nombreCompleto"
                             name="nombreCompleto"
                             type="text"
                             placeholder="Nombre completo"
                             value={formData.nombreCompleto}
                             onChange={handleChange}
-                            className="h-14 w-full rounded-xl border border-[#d7dbe2] bg-white pl-11 pr-5 text-[15px] text-[#231f3a] outline-none transition placeholder:text-[#6b7280] focus:border-[#587e8d] focus:ring-4 focus:ring-[#587e8d]/15"
+                            className="h-14 w-full rounded-xl border border-[#d7dbe2] bg-white pl-11 pr-5 text-[15px] text-[#231f3a] outline-none transition focus:border-[#587e8d] focus:ring-4 focus:ring-[#587e8d]/15"
                           />
                         </div>
                       </div>
 
-                      {/* Teléfono */}
-                      <div>
-                        <label htmlFor="telefonoWhatsapp" className="sr-only">
-                          Teléfono / WhatsApp
-                        </label>
-                        <div className="relative">
-                          <Phone className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6b7280]" />
-                          <input
-                            id="telefonoWhatsapp"
-                            name="telefonoWhatsapp"
-                            type="tel"
-                            placeholder="Teléfono / WhatsApp"
-                            value={formData.telefonoWhatsapp}
-                            onChange={handleChange}
-                            className="h-14 w-full rounded-xl border border-[#d7dbe2] bg-white pl-11 pr-5 text-[15px] text-[#231f3a] outline-none transition placeholder:text-[#6b7280] focus:border-[#587e8d] focus:ring-4 focus:ring-[#587e8d]/15"
-                          />
-                        </div>
+                      <div className="relative">
+                        <Mail className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6b7280]" />
+                        <input
+                          name="email"
+                          type="email"
+                          placeholder="Correo electrónico"
+                          value={formData.email}
+                          onChange={handleChange}
+                          className="h-14 w-full rounded-xl border border-[#d7dbe2] bg-white pl-11 pr-5 text-[15px] text-[#231f3a] outline-none transition focus:border-[#587e8d] focus:ring-4 focus:ring-[#587e8d]/15"
+                        />
                       </div>
 
-                      {/* Isapre */}
-                      <div>
-                        <label htmlFor="isapre" className="sr-only">
-                          Isapre donde trabajas
-                        </label>
-                        <div className="relative">
-                          <Building2 className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6b7280]" />
-                          <select
-                            id="isapre"
-                            name="isapre"
-                            value={formData.isapre}
-                            onChange={handleChange}
-                            className="h-14 w-full appearance-none rounded-xl border border-[#d7dbe2] bg-white pl-11 pr-5 text-[15px] text-[#231f3a] outline-none transition focus:border-[#587e8d] focus:ring-4 focus:ring-[#587e8d]/15"
-                          >
-                            <option value="" disabled>
-                              Isapre donde trabajas
+                      <div className="relative">
+                        <Phone className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6b7280]" />
+                        <input
+                          name="telefonoWhatsapp"
+                          type="tel"
+                          placeholder="Teléfono / WhatsApp"
+                          value={formData.telefonoWhatsapp}
+                          onChange={handleChange}
+                          className="h-14 w-full rounded-xl border border-[#d7dbe2] bg-white pl-11 pr-5 text-[15px] text-[#231f3a] outline-none transition focus:border-[#587e8d] focus:ring-4 focus:ring-[#587e8d]/15"
+                        />
+                      </div>
+
+                      <div className="relative">
+                        <Building2 className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6b7280]" />
+                        <select
+                          name="isapre"
+                          value={formData.isapre}
+                          onChange={handleChange}
+                          className="h-14 w-full appearance-none rounded-xl border border-[#d7dbe2] bg-white pl-11 pr-5 text-[15px] text-[#231f3a] outline-none transition focus:border-[#587e8d] focus:ring-4 focus:ring-[#587e8d]/15"
+                        >
+                          <option value="" disabled>
+                            Isapre donde trabajas
+                          </option>
+                          {isapres.map((item) => (
+                            <option key={item} value={item}>
+                              {item}
                             </option>
-                            {isapres.map((item) => (
-                              <option key={item} value={item}>
-                                {item}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
+                          ))}
+                        </select>
                       </div>
 
-                      {/* Cargo */}
-                      <div>
-                        <label htmlFor="cargoActual" className="sr-only">
-                          Cargo actual
-                        </label>
-                        <div className="relative">
-                          <BriefcaseBusiness className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6b7280]" />
-                          <select
-                            id="cargoActual"
-                            name="cargoActual"
-                            value={formData.cargoActual}
-                            onChange={handleChange}
-                            className="h-14 w-full appearance-none rounded-xl border border-[#d7dbe2] bg-white pl-11 pr-5 text-[15px] text-[#231f3a] outline-none transition focus:border-[#587e8d] focus:ring-4 focus:ring-[#587e8d]/15"
-                          >
-                            <option value="" disabled>
-                              Cargo actual
+                      <div className="relative">
+                        <BriefcaseBusiness className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6b7280]" />
+                        <select
+                          name="cargoActual"
+                          value={formData.cargoActual}
+                          onChange={handleChange}
+                          className="h-14 w-full appearance-none rounded-xl border border-[#d7dbe2] bg-white pl-11 pr-5 text-[15px] text-[#231f3a] outline-none transition focus:border-[#587e8d] focus:ring-4 focus:ring-[#587e8d]/15"
+                        >
+                          <option value="" disabled>
+                            Cargo actual
+                          </option>
+                          {cargos.map((item) => (
+                            <option key={item} value={item}>
+                              {item}
                             </option>
-                            {cargos.map((item) => (
-                              <option key={item} value={item}>
-                                {item}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
+                          ))}
+                        </select>
                       </div>
 
-                      {/* Situación */}
                       <div className="sm:col-span-2">
-                        <label htmlFor="situacion" className="sr-only">
-                          ¿En qué situación te encuentras?
-                        </label>
                         <div className="relative">
                           <AlertTriangle className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6b7280]" />
                           <select
-                            id="situacion"
                             name="situacion"
                             value={formData.situacion}
                             onChange={handleChange}
@@ -535,15 +505,10 @@ export default function ContactSection() {
                         </div>
                       </div>
 
-                      {/* Urgencia */}
                       <div className="sm:col-span-2">
-                        <label htmlFor="urgencia" className="sr-only">
-                          ¿Con qué urgencia necesitas asesoría?
-                        </label>
                         <div className="relative">
                           <Clock3 className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6b7280]" />
                           <select
-                            id="urgencia"
                             name="urgencia"
                             value={formData.urgencia}
                             onChange={handleChange}
@@ -561,68 +526,42 @@ export default function ContactSection() {
                         </div>
                       </div>
 
-                      {/* Detalle (opcional) */}
                       <div className="sm:col-span-2">
-                        <label htmlFor="situacionDetalle" className="sr-only">
-                          Cuéntanos brevemente tu situación
-                        </label>
                         <div className="relative">
                           <FileText className="pointer-events-none absolute left-4 top-4 h-4 w-4 text-[#6b7280]" />
                           <textarea
-                            id="situacionDetalle"
                             name="situacionDetalle"
-                            rows={5}
-                            placeholder="Cuéntanos brevemente tu situación (opcional). Describe brevemente la denuncia o situación que enfrentas."
+                            rows={4}
+                            placeholder="Cuéntanos brevemente tu situación (opcional)..."
                             value={formData.situacionDetalle}
                             onChange={handleChange}
-                            className="w-full rounded-xl border border-[#d7dbe2] bg-white pl-11 pr-5 pt-4 text-[15px] text-[#231f3a] outline-none transition placeholder:text-[#6b7280] focus:border-[#587e8d] focus:ring-4 focus:ring-[#587e8d]/15"
+                            className="w-full rounded-xl border border-[#d7dbe2] bg-white pl-11 pr-5 pt-4 text-[15px] text-[#231f3a] outline-none transition focus:border-[#587e8d] focus:ring-4 focus:ring-[#587e8d]/15"
                           />
                         </div>
                       </div>
-                    </div>
-
-                    <div className="rounded-2xl border border-white/10 bg-white/8 p-4 text-sm leading-6 text-white/70 backdrop-blur-sm">
-                      Nuestro equipo revisará tu caso antes de contactarte.
                     </div>
 
                     <div className="pt-2">
                       <motion.button
                         type="submit"
                         disabled={isSubmitting}
-                        whileHover={!isSubmitting ? { y: -2, scale: 1.01 } : {}}
-                        whileTap={!isSubmitting ? { scale: 0.98 } : {}}
-                        className="group inline-flex h-14 w-full items-center justify-center gap-3 rounded-xl bg-[linear-gradient(135deg,#2aa7a3_0%,#6bc2a8_100%)] px-6 text-base font-extrabold text-white shadow-[0_16px_40px_rgba(47,166,155,0.35)] transition hover:shadow-[0_18px_44px_rgba(47,166,155,0.45)] disabled:cursor-not-allowed disabled:opacity-70"
+                        className="group inline-flex h-14 w-full items-center justify-center gap-3 rounded-xl bg-[linear-gradient(135deg,#2aa7a3_0%,#6bc2a8_100%)] px-6 text-base font-extrabold text-white shadow-[0_16px_40px_rgba(47,166,155,0.35)] transition disabled:opacity-70"
                       >
                         {isSubmitting ? (
                           <>
-                            <Loader2 className="h-5 w-5 animate-spin" />
+                            <Loader2 className="h-5 w-5 animate-spin" />{" "}
                             Enviando...
                           </>
                         ) : (
                           <>
-                            Solicitar asesoría
+                            <ShieldCheck className="h-5 w-5" /> Solicitar
+                            asesoría{" "}
                             <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                           </>
                         )}
                       </motion.button>
                     </div>
                   </form>
-
-                  <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                    <a
-                      href="https://wa.me/56900000000"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/8 px-4 py-3 text-sm font-semibold text-white/85 backdrop-blur-sm transition hover:bg-white/12"
-                    >
-                      <MessageCircle className="h-4 w-4" />
-                      WhatsApp
-                    </a>
-
-                    <span className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/8 px-4 py-3 text-sm text-white/65 backdrop-blur-sm">
-                      Respuesta personalizada
-                    </span>
-                  </div>
                 </div>
               </div>
             </motion.div>

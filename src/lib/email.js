@@ -11,15 +11,20 @@ export const sendContactEmail = async (formData) => {
     throw new Error("Faltan variables públicas de EmailJS");
   }
 
+  // Aseguramos que todos los campos del formulario se envíen
   const templateParams = {
     nombreCompleto: formData.nombreCompleto,
+    email: formData.email, // Agregado: vital para contactar al cliente
     telefonoWhatsapp: formData.telefonoWhatsapp,
     isapre: formData.isapre,
     cargoActual: formData.cargoActual,
     situacion: formData.situacion,
     urgencia: formData.urgencia,
-    situacionDetalle:
-      formData.situacionDetalle || "No indicó detalles adicionales.",
+    situacionDetalle: formData.situacionDetalle?.trim()
+      ? formData.situacionDetalle
+      : "No indicó detalles adicionales.",
+    // Útil si quieres configurar el "Reply-To" en la plantilla de EmailJS
+    reply_to: formData.email,
   };
 
   return emailjs.send(serviceId, templateId, templateParams, {
