@@ -45,10 +45,11 @@ export const metadata = {
       "Protege tu carrera profesional. Asesoría y defensa especializada ante procesos y sanciones de la Superintendencia de Salud en Chile.",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "https://agenteprotegido.cl/images/og-image.png",
         width: 1200,
         height: 630,
         alt: "Agente Protegido — Defensa administrativa para ejecutivos de salud en Chile",
+        type: "image/png",
       },
     ],
   },
@@ -59,7 +60,7 @@ export const metadata = {
       "Defensa Administrativa para Ejecutivos de Salud en Chile | Agente Protegido",
     description:
       "Protege tu carrera profesional. Asesoría y defensa especializada ante procesos y sanciones de la Superintendencia de Salud en Chile.",
-    images: ["/images/og-image.jpg"],
+    images: ["https://agenteprotegido.cl/images/og-image.png"],
   },
 
   robots: {
