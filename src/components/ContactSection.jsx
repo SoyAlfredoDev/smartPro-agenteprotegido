@@ -288,10 +288,7 @@ export default function ContactSection() {
       </AnimatePresence>
 
       {/* ── Section ── */}
-      <section
-        id="contacto"
-        className="relative overflow-hidden bg-[#f7f7f9] py-16 sm:py-20 lg:py-24"
-      >
+      <section className="relative overflow-hidden bg-[#f7f7f9] py-16 sm:py-20 lg:py-24">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#f7f7f9_0%,#eef2f5_100%)]" />
           <div className="absolute left-0 top-0 h-[320px] w-full bg-[radial-gradient(circle_at_top_left,rgba(88,126,141,0.14),transparent_30%)]" />
@@ -394,6 +391,7 @@ export default function ContactSection() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.65, ease: "easeOut" }}
               className="relative"
+              id="contacto"
             >
               <div className="absolute -left-6 top-10 hidden h-[78%] w-[88%] rounded-[32px] bg-[#dfe4ea] lg:block" />
               <div className="absolute -right-5 bottom-8 hidden h-28 w-28 rounded-full bg-[#587e8d]/15 blur-3xl lg:block" />
