@@ -149,9 +149,9 @@ export default function AudienceAndHelpSection() {
                 Cómo te ayudamos
               </div>
 
-              <h3 className="mt-5 max-w-xl text-[2rem] font-black leading-[0.98] tracking-[-0.03em] text-white sm:text-[2.5rem]">
+              <h2 className="mt-5 max-w-xl text-[2rem] font-black leading-[0.98] tracking-[-0.03em] text-white sm:text-[2.5rem]">
                 Acompañamiento especializado en cada etapa del proceso
-              </h3>
+              </h2>
 
               <p className="mt-5 max-w-xl text-base leading-7 text-white/75 sm:text-lg">
                 Te damos claridad, dirección y respaldo para que enfrentes el
@@ -180,9 +180,9 @@ export default function AudienceAndHelpSection() {
                       </div>
 
                       <div>
-                        <h4 className="text-xl font-bold text-white">
+                        <h3 className="text-xl font-bold text-white">
                           {step.title}
-                        </h4>
+                        </h3>
                         <p className="mt-2 text-sm leading-7 text-white/72 sm:text-[15px]">
                           {step.description}
                         </p>

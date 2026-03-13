@@ -10,11 +10,13 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <HeroSection />
-      <ProblemServicesSection />
-      <AudienceAndHelpSection />
-      <ContactSection />
-      <NewsSection />
+      <main id="contenido-principal">
+        <HeroSection />
+        <ProblemServicesSection />
+        <AudienceAndHelpSection />
+        <ContactSection />
+        <NewsSection />
+      </main>
       <Footer />
     </>
   );

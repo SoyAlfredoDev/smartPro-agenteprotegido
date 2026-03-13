@@ -383,7 +383,7 @@ export default function ContactSection() {
                 className="mt-8 inline-flex items-center gap-3 rounded-xl border border-[#d8dde3] bg-white px-5 py-3 text-sm font-semibold text-[#231f3a] shadow-sm transition hover:border-[#587e8d] hover:text-[#587e8d]"
               >
                 <Mail className="h-4 w-4" />
-                contact@agenteseguro.cl
+                contacto@agenteprotegido.cl
               </motion.a>
             </motion.div>
 

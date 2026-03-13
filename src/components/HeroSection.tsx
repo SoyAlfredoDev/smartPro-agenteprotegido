@@ -103,7 +103,7 @@ export default function HeroSection() {
                 <div className="relative overflow-hidden rounded-[26px] bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
                   <Image
                     src="/images/hero-proteccion-profesional.png"
-                    alt="Abogado revisando documentos"
+                    alt="Defensa administrativa especializada para ejecutivos de salud en Chile — Agente Protegido"
                     width={1200}
                     height={800}
                     className="h-[260px] w-full object-cover sm:h-[340px] lg:h-[420px]"
