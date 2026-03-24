@@ -10,7 +10,6 @@ import {
   Building2,
   ArrowRight,
   CheckCircle2,
-  MessageCircle,
   User,
   BriefcaseBusiness,
   AlertTriangle,
@@ -66,6 +65,7 @@ const initialFormData = {
   situacion: "",
   urgencia: "",
   situacionDetalle: "",
+  terminos: false,
 };
 
 const requiredFields = [
@@ -76,6 +76,7 @@ const requiredFields = [
   { key: "cargoActual", label: "Cargo actual" },
   { key: "situacion", label: "Situación actual" },
   { key: "urgencia", label: "Nivel de urgencia" },
+  { key: "terminos", label: "Términos y condiciones" },
 ];
 
 /* ───────────────────────── Modal ───────────────────────── */
@@ -225,14 +226,30 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
 
   const getEmptyRequiredFields = useCallback(() => {
     return requiredFields
-      .filter((f) => !formData[f.key]?.trim())
-      .map((f) => f.label);
+      .filter(({ key }) => {
+        const value = formData[key];
+
+        if (typeof value === "boolean") {
+          return value !== true;
+        }
+
+        if (typeof value === "string") {
+          return value.trim() === "";
+        }
+
+        return !value;
+      })
+      .map(({ label }) => label);
   }, [formData]);
 
   const closeModal = useCallback(() => {
@@ -245,6 +262,7 @@ export default function ContactSection() {
     if (isSubmitting) return;
 
     const empty = getEmptyRequiredFields();
+
     if (empty.length > 0) {
       setMissingFields(empty);
       setModalType("validation_error");
@@ -255,10 +273,14 @@ export default function ContactSection() {
     setModalType(null);
 
     try {
-      const trimmed = Object.fromEntries(
-        Object.entries(formData).map(([k, v]) => [k, v.trim()]),
+      const sanitizedData = Object.fromEntries(
+        Object.entries(formData).map(([key, value]) => [
+          key,
+          typeof value === "string" ? value.trim() : value,
+        ]),
       );
-      await sendContactEmail(trimmed);
+
+      await sendContactEmail(sanitizedData);
       setModalType("success");
       setFormData(initialFormData);
     } catch (error) {
@@ -290,7 +312,6 @@ export default function ContactSection() {
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
-            {/* Left column */}
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -377,7 +398,6 @@ export default function ContactSection() {
               </motion.a>
             </motion.div>
 
-            {/* Right column — Form */}
             <motion.div
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -537,6 +557,27 @@ export default function ContactSection() {
                             onChange={handleChange}
                             className="w-full rounded-xl border border-[#d7dbe2] bg-white pl-11 pr-5 pt-4 text-[15px] text-[#231f3a] outline-none transition focus:border-[#587e8d] focus:ring-4 focus:ring-[#587e8d]/15"
                           />
+                        </div>
+                      </div>
+
+                      <div className="sm:col-span-2">
+                        <div className="relative">
+                          <input
+                            type="checkbox"
+                            name="terminos"
+                            id="terminos"
+                            checked={formData.terminos}
+                            onChange={handleChange}
+                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                          />
+                          <label
+                            className="ml-2 text-sm text-white"
+                            htmlFor="terminos"
+                          >
+                            Autorizo el tratamiento de mis datos personales
+                            conforme a la legislación vigente y la política de
+                            privacidad.
+                          </label>
                         </div>
                       </div>
                     </div>
