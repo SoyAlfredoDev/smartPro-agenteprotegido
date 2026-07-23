@@ -1,5 +1,6 @@
 "use client";
 
+import type { ElementType } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import {
@@ -12,7 +13,7 @@ import {
 import Link from "next/link";
 
 type FeatureItem = {
-  icon: React.ElementType;
+  icon: ElementType;
   title: string;
 };
 

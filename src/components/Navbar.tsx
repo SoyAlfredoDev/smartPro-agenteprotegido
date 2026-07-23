@@ -1,6 +1,11 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import {
+  useState,
+  useEffect,
+  useCallback,
+  type MouseEvent,
+} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, X } from "lucide-react";
@@ -36,7 +41,7 @@ export default function Navbar() {
   }, []);
 
   const scrollTo = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    (e: MouseEvent<HTMLAnchorElement>, href: string) => {
       e.preventDefault();
       setIsOpen(false);
 
