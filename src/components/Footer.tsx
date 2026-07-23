@@ -176,7 +176,10 @@ const Footer = () => {
             <a href="#" className="transition hover:text-[#587e8d]">
               Términos y Condiciones
             </a>
-            <a href="#" className="transition hover:text-[#587e8d]">
+            <a
+              href="/politica-privacidad"
+              className="transition hover:text-[#587e8d]"
+            >
               Política de Privacidad
             </a>
           </div>

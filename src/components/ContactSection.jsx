@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useCallback } from "react";
+import Link from "next/link";
 import { sendContactEmail } from "../lib/email";
 import {
   ShieldCheck,
@@ -575,8 +576,14 @@ export default function ContactSection() {
                             htmlFor="terminos"
                           >
                             Autorizo el tratamiento de mis datos personales
-                            conforme a la legislación vigente y la política de
-                            privacidad.
+                            conforme a la legislación vigente y la{" "}
+                            <Link
+                              href="/politica-privacidad"
+                              className="underline underline-offset-2 hover:text-[#8ab0bd]"
+                            >
+                              política de privacidad
+                            </Link>
+                            .
                           </label>
                         </div>
                       </div>
